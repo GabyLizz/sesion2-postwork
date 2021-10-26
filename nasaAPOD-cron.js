@@ -1,5 +1,5 @@
 const https = require('https');
-const { writeFile } = require('./files.js');
+const path = require('path');
 
 function getAPOD() {
   https
@@ -20,8 +20,10 @@ function getAPOD() {
         console.log('\n Explicación', body.explanation);
         console.log('\n URL:', body.url);
 
+        titulo = body.title;
+
         fs.writeFileSync(
-          path.join(__dirname, '/ejemplo_1.txt'),
+          path.join(__dirname, titulo),
           'Este es el contenido de mi archivo',
           { encoding: 'utf-8' }
         );
