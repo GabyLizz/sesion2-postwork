@@ -22,12 +22,11 @@ function getAPOD() {
         console.log('\n URL:', body.url);
 
         titulo = body.title;
+        url = body.url;
 
-        fs.writeFileSync(
-          path.join(__dirname,'../img', titulo),
-          'Este es el contenido de mi archivo',
-          { encoding: 'utf-8' }
-        );
+        fs.writeFileSync(path.join(__dirname, '../img'), url, {
+          encoding: 'utf-8',
+        });
         console.log('writeFileSync:', 'Archivo creado!');
       });
     })
