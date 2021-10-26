@@ -1,5 +1,5 @@
 const https = require('https');
-const { writeFile } = require('/files.js');
+const { writeFile } = require('./files.js');
 
 function getAPOD() {
   https
