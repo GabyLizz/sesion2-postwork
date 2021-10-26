@@ -20,11 +20,7 @@ function getAPOD() {
         console.log('\n Explicación', body.explanation);
         console.log('\n URL:', body.url);
 
-        title = body.title;
-        url = body.url;
-
-        writeFile(title, 'img', url);
-        console.log('libro registrado correctamente');
+        return body;
       });
     })
     .on('error', (err) => {
@@ -32,4 +28,13 @@ function getAPOD() {
     });
 }
 
-getAPOD();
+const createImage = async () => {
+  try {
+    datos = getAPOD().body;
+    await writeFile(datos.title, 'img', JSON.stringify(datos.url));
+    console.log('imagen guardada correctamente');
+  } catch (err) {
+    if (err.isTtyError) throw err;
+    console.log(err);
+  }
+};
