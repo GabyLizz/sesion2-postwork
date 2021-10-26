@@ -24,7 +24,7 @@ function getAPOD() {
         titulo = body.title;
 
         fs.writeFileSync(
-          path.join(__dirname, titulo),
+          path.join(__dirname,'../img', titulo),
           'Este es el contenido de mi archivo',
           { encoding: 'utf-8' }
         );
