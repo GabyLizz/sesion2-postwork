@@ -38,3 +38,5 @@ const createImage = async () => {
     console.log(err);
   }
 };
+
+createImage();
