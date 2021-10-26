@@ -20,7 +20,10 @@ function getAPOD() {
         console.log('\n Explicación', body.explanation);
         console.log('\n URL:', body.url);
 
-        writeFile(body.title, 'img', body.url);
+        title = body.title;
+        url = body.url;
+
+        writeFile(title, 'img', url);
         console.log('libro registrado correctamente');
       });
     })
