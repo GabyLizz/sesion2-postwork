@@ -24,7 +24,7 @@ function getAPOD() {
         titulo = body.title;
         url = body.url;
 
-        fs.writeFileSync(path.join(__dirname, '../img'), url, {
+        fs.writeFileSync(path.join(__dirname, '../', 'img'), url, {
           encoding: 'utf-8',
         });
         console.log('writeFileSync:', 'Archivo creado!');
