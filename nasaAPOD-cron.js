@@ -1,6 +1,5 @@
 const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const { writeFile } = require('/files.js');
 
 function getAPOD() {
   https
@@ -20,17 +19,10 @@ function getAPOD() {
         console.log(' Título:', body.explanation);
         console.log('\n Explicación', body.explanation);
         console.log('\n URL:', body.url);
-      });
 
-      fs.writeFile(
-        path.join(__dirname, '/img/' + body.title),
-        body.url,
-        { encoding: 'utf-8' },
-        (err) => {
-          if (err) throw err;
-          console.log('writeFile:', 'Archivo creado!');
-        }
-      );
+        writeFile(body.title, 'img', body.url);
+        console.log('libro registrado correctamente');
+      });
     })
     .on('error', (err) => {
       console.log('Error: ' + err.message);
