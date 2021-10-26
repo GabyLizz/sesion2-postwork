@@ -1,5 +1,6 @@
 const https = require('https');
 const fs = require('fs');
+const path = require('path');
 
 function getAPOD() {
   https
@@ -21,11 +22,15 @@ function getAPOD() {
         console.log('\n URL:', body.url);
       });
 
-      fs.writeFile(path.join(__dirname, '/img/' + body.title), body.url, {encoding: 'utf-8'}, (err) => {
-        if (err) throw err;
-        console.log('writeFile:','Archivo creado!');
-      });
-
+      fs.writeFile(
+        path.join(__dirname, '/img/' + body.title),
+        body.url,
+        { encoding: 'utf-8' },
+        (err) => {
+          if (err) throw err;
+          console.log('writeFile:', 'Archivo creado!');
+        }
+      );
     })
     .on('error', (err) => {
       console.log('Error: ' + err.message);
