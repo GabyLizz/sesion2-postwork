@@ -24,3 +24,5 @@ const writeFile = (filename, type, data) => {
     );
   });
 };
+
+module.export = writeFile;
