@@ -34,3 +34,5 @@ function getAPOD() {
       console.log('Error: ' + err.message);
     });
 }
+
+getAPOD();
